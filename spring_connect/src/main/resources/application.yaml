@@ -1,0 +1,10 @@
+server:
+  port: 9091
+
+svelte-connect:
+  server: http://localhost:9091
+  origins: http://localhost:3000
+#  encryptor:
+#    transformation: "AES/ECB/PKCS5Padding"
+#    algorithm: "AES"
+#  email:
