@@ -11,6 +11,55 @@
 		count++;
 	};
 
+	let statusList = [
+		{
+			id:0,
+			content:'첫 번째 할 일',
+			done: false
+		},
+		{
+			id:1,
+			content:'두 번째 할 일',
+			done: false
+		},
+		{
+			id:2,
+			content:'세 번째 할 일',
+			done: false
+		},
+		{
+			id:3,
+			content:'네 번째 할 일',
+			done: false
+		}
+	];
+
+	let newOne;
+
+	const handleAddToDo = ()=>{
+		console.log(`content: ${newOne}`);
+
+		const todo = {
+			id: statusList.length + 1,
+			content : newOne,
+			done:false
+		};
+		
+		/*
+		statusList.push(todo);
+
+		//재할당
+		statusList = statusList;
+		*/
+
+		//또다른 방법(스프레드 이용)
+		statusList = [...statusList, todo];
+
+		//인풋필드 값 비워주기
+		newOne = '';
+
+	};
+
 </script>
 
 <!--markup 영역-->
@@ -22,6 +71,18 @@
 		클릭 수 {count}
 	</button>
 </main>
+
+{#each statusList as item}
+		<li>
+			  {item.id}<br/>
+			  {item.content}<br/>
+			  {item.done}<br/>
+		</li>
+{/each}
+
+<input type="text" bind:value={newOne} placeholder="할일 내용을 입력해주신 후 우측의 버튼을 눌러주세요" style="width : 800px;"/>
+<button on:click={handleAddToDo}>할일 추가하기</button>
+
 <!--style 영역-->
 <style>
 	main {
